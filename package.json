@@ -1,0 +1,23 @@
+{
+  "name": "chain-bluider-api",
+  "version": "1.0.0",
+  "description": "Api to generate script in order to build an Ethereum blockchain",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nicoduchR/chain-bluider-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nicoduchR/chain-bluider-api/issues"
+  },
+  "homepage": "https://github.com/nicoduchR/chain-bluider-api#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
