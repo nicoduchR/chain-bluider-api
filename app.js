@@ -103,7 +103,7 @@ app.get('/script', function (req, res) {
 
 
 function generateScript(){
-
+  let script = ``
 }
 
 

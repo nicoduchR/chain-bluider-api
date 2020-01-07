@@ -1,28 +1,13 @@
 #!/bin/bash
-# Usage: Create blockchain network and join with the first node
+# Usage: Join an already existing blockchain network
 # Author: Nicolas Duchemann
 # -------------------------------------------------
-echo "Usage: Create blockchain network"
+echo "Usage: Join an already existing blockchain network"
 echo "Installing geth ..."
 apt-get install software-properties-common \
 && add-apt-repository -y ppa:ethereum/ethereum \
 && apt-get update \
 && apt-get -y install ethereum
-
-echo "Creation of bootnode"
-cd  /root/
-bootnode -genkey boot.key
-apt-get install supervisor
-touch /etc/supervisor/conf.d/boot.conf
-echo "[program:bootnode]
-command=bootnode -nodekey /root/boot.key -verbosity 9 -addr :30310
-autostart=true
-autorestart=true
-stderr_logfile=/root/booterr.log
-stdout_logfile=/root/bootlog.log" >> /etc/supervisor/conf.d/boot.conf
-
-supervisorctl reread
-supervisorctl update
 
 echo "Creation of node"
 geth account new --datadir datadir
@@ -60,4 +45,4 @@ supervisorctl reread
 supervisorctl update
 
 
-echo "Everything goes fine. You blockchain is running"
+echo "Everything goes fine. You are now a node on the blockchain. "
