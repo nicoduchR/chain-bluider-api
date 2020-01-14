@@ -31,6 +31,14 @@ echo "Please type your password again. It will save it to /root/datadir/password
 read password
 echo $password >> /root/datadir/password.txt
 
+# Transforming address string
+address=$(cat /root/datadir/keystore/$file | grep -Po '"address":\K"[A-Za-z0-9/._]*"')
+address="${address:0:1}0x${address:1}"
+address=${address:1:-1}
+# Save it to text file 
+echo $address >> /root/datadir/address.txt
+
+
 echo "Genesis initialization"
 geth --datadir ./datadir init ./genesis.json
 
@@ -42,10 +50,6 @@ for file in /root/datadir/keystore/*; do
   file="${file##*/}"
 done
 
-#Transforming address string
-address=$(cat /root/datadir/keystore/$file | grep -Po '"address":\K"[A-Za-z0-9/._]*"')
-address="${address:0:1}0x${address:1}"
-address=${address:1:-1}
 
 
 touch /etc/supervisor/conf.d/node.conf
