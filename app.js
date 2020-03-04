@@ -12,7 +12,7 @@ app.get('/genesis', function (req, res) {
   let chainId = ((req.body.chainId != undefined) ? req.body.chainId : Math.floor(Math.random() * 10000) + 100 );
   let consensus = ((req.body.consensus != undefined) ? req.body.consensus : 'clique' );
   let timestamp = ((req.body.timestamp != undefined) ? req.body.timestamp : Date.now() );
-  let extraData = ((req.body.extraData != undefined) ? req.body.extraData : '' );
+  let extraData = ((req.body.extraData != undefined) ? req.body.extraData : 'This line is going to be filled when you will execute the script');
   let gasLimit = ((req.body.gasLimit != undefined) ? req.body.gasLimit : "0x47b760" );
   let difficulty = ((req.body.difficulty != undefined) ? req.body.difficulty : "0x1" );
   let alloc = ((req.body.alloc != undefined) ? req.body.alloc : "7a54c3375e06f05e07866fa842e51c6811219e0d" );
@@ -56,6 +56,56 @@ app.get('/genesis', function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   res.end(genesis);
 })
+
+
+app.get('/script', function (req, res) {
+  console.log('toto');
+  let genesis = req.body.genesis;
+  console.log(genesis);
+  res.send(genesis);
+
+
+
+
+  script = generateScript();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // fs.writeFile('./genesis/genesis_' + chainId + '.json', genesis, (err) => {
+  //   if (err) throw err;
+  //   console.log('Genesis Saved');
+  // });
+  // const file = `${__dirname}/genesis/genesis_${chainId}.json`;
+  // res.download(file); 
+})
+
+
+function generateScript(){
+  let script = ``
+}
+
 
 
 app.listen(3000, function () {
